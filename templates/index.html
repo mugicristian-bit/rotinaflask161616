@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Rotina</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f7f7f7; }
+        h1 { text-align: center; }
+        h2 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #eee; }
+    </style>
+</head>
+<body>
+    <h1>Minha Rotina Diária</h1>
+
+    {% for tipo_dia, atividades in rotina.items() %}
+        <h2>{{ tipo_dia }}</h2>
+        <table>
+            <tr>
+                <th>Horário</th>
+                <th>Atividade</th>
+            </tr>
+            {% for horario, atividade in atividades %}
+            <tr>
+                <td>{{ horario }}</td>
+                <td>{{ atividade }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+</body>
+</html>
