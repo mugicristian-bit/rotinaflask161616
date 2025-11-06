@@ -2,14 +2,79 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Minha Rotina</title>
+    <title>Minha Rotina Diária</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f7f7f7; }
-        h1 { text-align: center; }
-        h2 { color: #333; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        th { background-color: #eee; }
+        /* Estilo geral */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #f0f4f8, #e2eaf1);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            padding: 20px 0;
+            font-size: 2.5em;
+            background-color: #3498db;
+            color: #fff;
+            margin: 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 1.8em;
+        }
+
+        table {
+            width: 90%;
+            max-width: 900px;
+            margin: 20px auto 40px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 20px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 1.1em;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f7f9fb;
+        }
+
+        /* Cores por tipo de atividade */
+        .trabalho { background-color: #ffcccc; }
+        .estudo { background-color: #ccffcc; }
+        .programacao { background-color: #cce0ff; }
+        .lazer { background-color: #fff0b3; }
+        .treino { background-color: #ffd9cc; }
+        .limpeza { background-color: #e6ccff; }
+        .banho { background-color: #d9f0ff; }
+
+        td {
+            font-size: 1em;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #555;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
@@ -23,12 +88,22 @@
                 <th>Atividade</th>
             </tr>
             {% for horario, atividade in atividades %}
-            <tr>
+            <tr 
+                {% if "Trabalho" in atividade %} class="trabalho" 
+                {% elif "Estudo" in atividade or "ENEM" in atividade %} class="estudo" 
+                {% elif "Programação" in atividade %} class="programacao"
+                {% elif "Lazer" in atividade %} class="lazer"
+                {% elif "Calistenia" in atividade %} class="treino"
+                {% elif "Limpeza" in atividade %} class="limpeza"
+                {% elif "Banho" in atividade or "jantar" in atividade %} class="banho"
+                {% endif %}>
                 <td>{{ horario }}</td>
                 <td>{{ atividade }}</td>
             </tr>
             {% endfor %}
         </table>
     {% endfor %}
+
+    <footer>Feito com ❤️ usando Flask e HTML/CSS</footer>
 </body>
 </html>
