@@ -4,40 +4,39 @@
     <meta charset="UTF-8">
     <title>Minha Rotina Diária</title>
     <style>
-        /* Estilo geral */
+        /* Estilo geral do tema escuro */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #f0f4f8, #e2eaf1);
+            background-color: #121212;
+            color: #e0e0e0;
             margin: 0;
             padding: 0;
         }
 
         h1 {
             text-align: center;
-            color: #2c3e50;
             padding: 20px 0;
-            font-size: 2.5em;
-            background-color: #3498db;
-            color: #fff;
+            font-size: 2.2em;
+            background-color: #1f1f1f;
             margin: 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 2px solid #333;
         }
 
         h2 {
-            color: #2c3e50;
-            margin-top: 40px;
             text-align: center;
-            font-size: 1.8em;
+            margin: 30px 0 10px 0;
+            color: #bb86fc;
         }
 
         table {
             width: 90%;
-            max-width: 900px;
-            margin: 20px auto 40px auto;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
             border-collapse: collapse;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #1e1e1e;
             border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
         th, td {
@@ -46,34 +45,37 @@
         }
 
         th {
-            background-color: #3498db;
-            color: white;
-            font-size: 1.1em;
+            background-color: #2c2c2c;
+            color: #bb86fc;
         }
 
         tr:nth-child(even) td {
-            background-color: #f7f9fb;
+            background-color: #1b1b1b;
         }
 
-        /* Cores por tipo de atividade */
-        .trabalho { background-color: #ffcccc; }
-        .estudo { background-color: #ccffcc; }
-        .programacao { background-color: #cce0ff; }
-        .lazer { background-color: #fff0b3; }
-        .treino { background-color: #ffd9cc; }
-        .limpeza { background-color: #e6ccff; }
-        .banho { background-color: #d9f0ff; }
+        tr:nth-child(odd) td {
+            background-color: #222;
+        }
+
+        /* Cores leves por tipo de atividade */
+        .trabalho { color: #cf6679; }
+        .estudo { color: #03dac6; }
+        .programacao { color: #82b1ff; }
+        .lazer { color: #ffeb3b; }
+        .treino { color: #ff9800; }
+        .limpeza { color: #ba68c8; }
+        .banho { color: #81d4fa; }
 
         td {
             font-size: 1em;
         }
 
-        /* Rodapé */
         footer {
             text-align: center;
             padding: 20px 0;
-            color: #555;
             font-size: 0.9em;
+            color: #888;
+            border-top: 1px solid #333;
         }
     </style>
 </head>
@@ -88,7 +90,7 @@
                 <th>Atividade</th>
             </tr>
             {% for horario, atividade in atividades %}
-            <tr 
+            <tr
                 {% if "Trabalho" in atividade %} class="trabalho" 
                 {% elif "Estudo" in atividade or "ENEM" in atividade %} class="estudo" 
                 {% elif "Programação" in atividade %} class="programacao"
